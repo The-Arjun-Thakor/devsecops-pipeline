@@ -84,7 +84,7 @@ jobs:
         with:
           fetch-depth: 0 # scan the full history, not just the latest commit
 
-      - uses: gitleaks/gitleaks-action@v2
+      - uses: gitleaks/gitleaks-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Note: free for personal accounts; organisation repos need a GITLEAKS_LICENSE secret.
