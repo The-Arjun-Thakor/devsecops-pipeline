@@ -160,3 +160,8 @@ jobs:
           test "$(curl -s -o /dev/null -w '%{http_code}' -H 'X-API-Key: ci-only-key' http://127.0.0.1:8000/tasks)" = "200"
           docker logs app
           docker rm -f app
+
+      # If the smoke test fails, show what the container itself said.
+      - name: Show container logs on failure
+        if: failure()
+        run: docker logs app || true
