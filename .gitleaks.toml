@@ -1,0 +1,10 @@
+# Gitleaks configuration: start from the built-in rule set and only add an
+# allowlist for the intentionally insecure training examples (dummy values only).
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Intentionally insecure training examples (dummy values only)"
+paths = [
+  '''demo/''',
+]

@@ -1,0 +1,16 @@
+# Keeps dependencies, the base image and the pipeline's own actions up to date.
+# Outdated components are one of the most common sources of known vulnerabilities.
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/app"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/app"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
