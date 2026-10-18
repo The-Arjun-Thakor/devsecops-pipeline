@@ -122,7 +122,7 @@ jobs:
 
       # Gate: fail on HIGH/CRITICAL vulnerabilities that already have a fix available.
       - name: Scan image for vulnerabilities (Trivy)
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: devsecops-demo:${{ github.sha }}
           severity: HIGH,CRITICAL
@@ -133,7 +133,7 @@ jobs:
       # Software Bill of Materials: an inventory of every component in the image,
       # so you can answer "are we affected?" quickly when the next Log4Shell appears.
       - name: Generate SBOM (CycloneDX)
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: devsecops-demo:${{ github.sha }}
           format: cyclonedx

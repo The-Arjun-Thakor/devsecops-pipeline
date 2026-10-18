@@ -1,10 +1,18 @@
-# Gitleaks configuration: start from the built-in rule set and only add an
-# allowlist for the intentionally insecure training examples (dummy values only).
+# Gitleaks configuration: start from the built-in rule set and only add
+# narrow allowlists. Nothing is disabled globally.
 [extend]
 useDefault = true
 
 [allowlist]
-description = "Intentionally insecure training examples (dummy values only)"
+description = "Intentionally insecure training examples and documented dummy values"
+# 1) The demo/ folder is intentionally insecure (used to show scanners firing).
 paths = [
   '''demo/''',
+]
+# 2) Dummy API keys that appear in the README and in the CI smoke test.
+#    They protect nothing: ci-only-key exists only inside a throwaway CI
+#    container, change-me-locally is a placeholder shown in the docs.
+regexes = [
+  '''ci-only-key''',
+  '''change-me-locally''',
 ]
